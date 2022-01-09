@@ -1,0 +1,15 @@
+C:\Users\fdiasfer\source\repos\Century\src\Century.Data\bin\Debug\net5.0\Century.Data.deps.json
+C:\Users\fdiasfer\source\repos\Century\src\Century.Data\bin\Debug\net5.0\Century.Data.dll
+C:\Users\fdiasfer\source\repos\Century\src\Century.Data\bin\Debug\net5.0\ref\Century.Data.dll
+C:\Users\fdiasfer\source\repos\Century\src\Century.Data\bin\Debug\net5.0\Century.Data.pdb
+C:\Users\fdiasfer\source\repos\Century\src\Century.Data\bin\Debug\net5.0\Century.Business.dll
+C:\Users\fdiasfer\source\repos\Century\src\Century.Data\bin\Debug\net5.0\Century.Business.pdb
+C:\Users\fdiasfer\source\repos\Century\src\Century.Data\obj\Debug\net5.0\Century.Data.csproj.AssemblyReference.cache
+C:\Users\fdiasfer\source\repos\Century\src\Century.Data\obj\Debug\net5.0\Century.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fdiasfer\source\repos\Century\src\Century.Data\obj\Debug\net5.0\Century.Data.AssemblyInfoInputs.cache
+C:\Users\fdiasfer\source\repos\Century\src\Century.Data\obj\Debug\net5.0\Century.Data.AssemblyInfo.cs
+C:\Users\fdiasfer\source\repos\Century\src\Century.Data\obj\Debug\net5.0\Century.Data.csproj.CoreCompileInputs.cache
+C:\Users\fdiasfer\source\repos\Century\src\Century.Data\obj\Debug\net5.0\Century.Data.csproj.CopyComplete
+C:\Users\fdiasfer\source\repos\Century\src\Century.Data\obj\Debug\net5.0\Century.Data.dll
+C:\Users\fdiasfer\source\repos\Century\src\Century.Data\obj\Debug\net5.0\ref\Century.Data.dll
+C:\Users\fdiasfer\source\repos\Century\src\Century.Data\obj\Debug\net5.0\Century.Data.pdb

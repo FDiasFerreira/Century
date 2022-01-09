@@ -1,0 +1,12 @@
+C:\Users\fdiasfer\source\repos\Century\src\Century.Business\bin\Debug\net5.0\Century.Business.deps.json
+C:\Users\fdiasfer\source\repos\Century\src\Century.Business\bin\Debug\net5.0\Century.Business.dll
+C:\Users\fdiasfer\source\repos\Century\src\Century.Business\bin\Debug\net5.0\ref\Century.Business.dll
+C:\Users\fdiasfer\source\repos\Century\src\Century.Business\bin\Debug\net5.0\Century.Business.pdb
+C:\Users\fdiasfer\source\repos\Century\src\Century.Business\obj\Debug\net5.0\Century.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fdiasfer\source\repos\Century\src\Century.Business\obj\Debug\net5.0\Century.Business.AssemblyInfoInputs.cache
+C:\Users\fdiasfer\source\repos\Century\src\Century.Business\obj\Debug\net5.0\Century.Business.AssemblyInfo.cs
+C:\Users\fdiasfer\source\repos\Century\src\Century.Business\obj\Debug\net5.0\Century.Business.csproj.CoreCompileInputs.cache
+C:\Users\fdiasfer\source\repos\Century\src\Century.Business\obj\Debug\net5.0\Century.Business.dll
+C:\Users\fdiasfer\source\repos\Century\src\Century.Business\obj\Debug\net5.0\ref\Century.Business.dll
+C:\Users\fdiasfer\source\repos\Century\src\Century.Business\obj\Debug\net5.0\Century.Business.pdb
+C:\Users\fdiasfer\source\repos\Century\src\Century.Business\obj\Debug\net5.0\Century.Business.csproj.AssemblyReference.cache
