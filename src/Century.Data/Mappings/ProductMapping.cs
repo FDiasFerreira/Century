@@ -38,9 +38,9 @@ namespace Century.Data.Mappings
               .WithMany(c => c.Products)
               .HasForeignKey(p => p.SupplierId);
 
-            builder.HasOne(p => p.Category)
-                .WithMany(c => c.Products)
-                .HasForeignKey(p => p.CategoryId);
+            //builder.HasOne(p => p.Category)
+            //    .WithMany(c => c.Products)
+            //    .HasForeignKey(p => p.CategoryId);
 
 
             builder.ToTable("Tb_Produtos");

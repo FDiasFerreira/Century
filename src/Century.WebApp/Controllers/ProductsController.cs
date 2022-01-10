@@ -8,6 +8,7 @@ using AutoMapper;
 using Century.Business.Models;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Century.WebApp.Controllers
 {
@@ -17,19 +18,21 @@ namespace Century.WebApp.Controllers
         private readonly ISupplierRepository _supplierRepository;
         private readonly IMapper _mapper;
 
-        public ProductsController(IProductRepository productRepository, 
+        public ProductsController(IProductRepository productRepository,
             ISupplierRepository supplierRepository, IMapper mapper)
         {
             _productRepository = productRepository;
             _supplierRepository = supplierRepository;
             _mapper = mapper;
         }
-                
+
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(_mapper.Map<IEnumerable<ProductViewModel>>(await _productRepository.GetProductsAndSuppliers()));
         }
-                
+
+        [AllowAnonymous]
         public async Task<IActionResult> Details(Guid id)
         {
             var productViewModel = await GetProduct(id);
@@ -41,11 +44,11 @@ namespace Century.WebApp.Controllers
 
             return View(productViewModel);
         }
-       
+
         public async Task<IActionResult> Create()
         {
             var productViewModel = await FillSupplier(new ProductViewModel());
-            return View(productViewModel); 
+            return View(productViewModel);
         }
 
         // POST: Products/Create        
@@ -62,13 +65,14 @@ namespace Century.WebApp.Controllers
 
             //Upload de imagem
             var imgImageName = Guid.NewGuid() + "_"; //gerando um guid vc impede 2 confusão de duas imagens com mesmo nome
-            if(! await UploadFile(productViewModel.ImageUpload, imgImageName))
+            if (!await UploadFile(productViewModel.ImageUpload, imgImageName))
             {
                 return View(productViewModel);
             }
 
             productViewModel.ImagePath = imgImageName + productViewModel.ImageUpload.FileName;
-           await _productRepository.Adicionar(_mapper.Map<Product>(productViewModel));
+
+            await _productRepository.Adicionar(_mapper.Map<Product>(productViewModel));
 
             return RedirectToAction("Index");
         }
@@ -95,27 +99,48 @@ namespace Century.WebApp.Controllers
                 return NotFound();
             }
 
+            var productatualize = await GetProduct(id);
+            productViewModel.Supplier = productatualize.Supplier;
+            productViewModel.ImagePath = productatualize.ImagePath;
             if (!ModelState.IsValid)
             {
                 return View(productViewModel);
             }
 
-            await _productRepository.Atualizar(_mapper.Map<Product>(productViewModel));
+            if (productViewModel.ImageUpload != null)
+            {
+                var imgImageName = Guid.NewGuid() + "_";
+                if (!await UploadFile(productViewModel.ImageUpload, imgImageName))
+                {
+                    return View(productViewModel);
+                }
+                productatualize.ImagePath = imgImageName + productViewModel.ImageUpload.FileName;
+            }
+            //evita na edição a mudança de campos que vc não quer, como adicionar um novo fornecedor, por exemplo
+            productatualize.Name = productViewModel.Name;
+            productatualize.BarCode = productViewModel.BarCode;
+            productatualize.QuantityStock = productViewModel.QuantityStock;
+            productatualize.Active = productViewModel.Active;
+            productatualize.PriceSales = productViewModel.PriceSales;
+            productatualize.PricePurchase = productViewModel.PricePurchase;
+            productatualize.Category = productViewModel.Category;
+
+            await _productRepository.Atualizar(_mapper.Map<Product>(productatualize));
             return RedirectToAction("Index");
         }
 
-       
+
         public async Task<IActionResult> Delete(Guid id)
         {
             var product = await GetProduct(id);
 
-            if(product == null)
+            if (product == null)
             {
                 return NotFound();
             }
             return View(product);
         }
-        
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
@@ -126,34 +151,30 @@ namespace Century.WebApp.Controllers
             {
                 return NotFound();
             }
-           await _productRepository.Remover(id);
+            await _productRepository.Remover(id);
             return RedirectToAction("Index");
         }
+
+
 
         private async Task<ProductViewModel> GetProduct(Guid id)
         {
             var product = _mapper.Map<ProductViewModel>(await _productRepository.GetProductSupplier(id));
-            product.Supplier = (SupplierViewModel)_mapper.Map<IEnumerable<SupplierViewModel>>(await _supplierRepository.ObterTodos());
-            return product; 
+            product.Suppliers = _mapper.Map<IEnumerable<SupplierViewModel>>(await _supplierRepository.ObterTodos());
+            return product;
         }
 
-        //private async Task<ProductViewModel> GetProduct(Guid id)
-        //{
-        //    var product = _mapper.Map<ProductViewModel>(await _productRepository.GetProductSupplier(id));
-        //    product.Supplier = (SupplierViewModel)_mapper.Map<IEnumerable<SupplierViewModel>>(await _supplierRepository.ObterTodos());
-        //    return product;
-        //}
 
         //Preencher a Model 
-        private async Task<ProductViewModel> FillSupplier (ProductViewModel product)
-        {            
+        private async Task<ProductViewModel> FillSupplier(ProductViewModel product)
+        {
             product.Suppliers = _mapper.Map<IEnumerable<SupplierViewModel>>(await _supplierRepository.ObterTodos());
             return product;
         }
 
         private async Task<bool> UploadFile(IFormFile file, string imgImageName)
         {
-            if(file.Length <= 0) // imagem não está boa
+            if (file.Length <= 0) // imagem não está boa
             {
                 return false;
             }

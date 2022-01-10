@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
+using Century.WebApp.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace Century.WebApp.Models
 {
@@ -36,10 +37,12 @@ namespace Century.WebApp.Models
         [DisplayName("Active?")]
         public bool Active { get; set; }
 
+        [MoedaValidation]
         [Required(ErrorMessage = "The field {0} is mandatory")]
         [DisplayName("Sales Price")]
         public decimal PriceSales { get; set; }
 
+        [MoedaValidation]
         [Required(ErrorMessage = "The field {0} is mandatory")]
         [DisplayName("Purchase Price")]
         public decimal PricePurchase { get; set; }

@@ -91,9 +91,6 @@ namespace Century.Data.Migrations
                     b.Property<Guid>("Product")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
@@ -173,7 +170,7 @@ namespace Century.Data.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(13)");
 
-                    b.Property<Guid>("CategoryId")
+                    b.Property<Guid?>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ImagePath")
@@ -290,9 +287,7 @@ namespace Century.Data.Migrations
                 {
                     b.HasOne("Century.Business.Models.Category", "Category")
                         .WithMany("Products")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CategoryId");
 
                     b.HasOne("Century.Business.Models.Supplier", "Supplier")
                         .WithMany("Products")

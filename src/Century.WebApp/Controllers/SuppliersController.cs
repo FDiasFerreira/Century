@@ -6,6 +6,7 @@ using Century.WebApp.Models;
 using Century.Business.Interfaces;
 using AutoMapper;
 using Century.Business.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Century.WebApp.Controllers
 {
@@ -20,13 +21,14 @@ namespace Century.WebApp.Controllers
             _supplierRepository = supplierRepository;
             _mapper = mapper;
         }             
-       
+       [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(_mapper.Map<IEnumerable<SupplierViewModel>>(await _supplierRepository
                  .ObterTodos()));
         }
-       
+
+        [AllowAnonymous]
         public async Task<IActionResult> Details(Guid id)
         {
             var supplierViewModel = await GetSupplierAddressPhoneEmail(id);
@@ -38,7 +40,6 @@ namespace Century.WebApp.Controllers
 
             return View(supplierViewModel);           
         }
-
         
         public IActionResult Create()
         {

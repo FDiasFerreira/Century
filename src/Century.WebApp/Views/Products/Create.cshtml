@@ -10,21 +10,21 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
+
         @*//Este ipo de form é para permitir upload de imagens*@
         <form enctype="multipart/form-data" asp-action="Create">
-
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             @*//Este código abaixo é para popular a lista de fornecedores do produto*@
-        <div class="form-group">
-            <label asp-for="SupplierId" class="control-label"></label>
-            <select asp-for="SupplierId" class="form-control" asp-items="@(new SelectList(Model.Suppliers, "Id", "Name"))">
-                <option></option>
-            </select>
-            <span asp-validation-for="Name" class="text-danger"></span>
+            <div class="form-group">
+                <label asp-for="SupplierId" class="control-label"></label>
+                <select asp-for="SupplierId" class="form-control" asp-items="@(new SelectList(Model.Suppliers, "Id", "Name"))">
+                    <option></option>
+                </select>
+                <span asp-validation-for="Name" class="text-danger"></span>
 
-        </div>
+            </div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -55,6 +55,8 @@
                 <input asp-for="PricePurchase" class="form-control" />
                 <span asp-validation-for="PricePurchase" class="text-danger"></span>
             </div>
+
+
             <div class="form-group">
                 <label asp-for="ImageUpload" class="control-label"></label>
 
@@ -64,9 +66,15 @@
                     <label data-browse="Search" style="width:400px" class="custom-file-label" for="ImageUpload"></label>
                     <label style="display: none" id="img_name"></label>
                 </div>
-               
+
                 <span asp-validation-for="ImageUpload" class="text-danger"></span>
             </div>
+
+            <h4>Category</h4>
+            <hr />
+
+            <partial name="_Category" />
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
                 <a class="btn btn-info" asp-action="Index">Back to List</a>
@@ -76,19 +84,20 @@
 </div>
 
 
- 
+
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
-    <script>
-        $("#ImageUpload").change(function () {
-            $("#img_name").text(this.files[0].name);
-            $("#img_name")[0].style.display = 'block';
-        });
+    @*<script>
+            $("#ImageUpload").change(function () {
+                $("#img_name").text(this.files[0].name);
+                $("#img_name")[0].style.display = 'block';
+            });
 
-        /*//Este javascript  é para quando for editar um produto, não precisa alterar a imagem. Não vai ser obrigado a colocar outra*/
-        $("#ImageUpload").attr("data-val", "true");
-        $("#ImageUpload").attr("data-val-required", "The field Image is mandatory");
-    </script>
+            /*//Este javascript  é para quando for editar um produto, não precisa alterar a imagem. Não vai ser obrigado a colocar outra*/
+            $("#ImageUpload").attr("data-val", "true");
+            $("#ImageUpload").attr("data-val-required", "The field Image is mandatory");
+        </script>*@
 
 }

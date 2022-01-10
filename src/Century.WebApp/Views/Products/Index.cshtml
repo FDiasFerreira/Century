@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Century.WebApp.Models.ProductViewModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Products List";
 }
 
-<h1>Products</h1>
+<h1>Products List</h1>
 
 <p>
     <a class="btn btn-info" asp-action="Create">New Product</a>
@@ -12,6 +12,9 @@
 <table class="table table-hover">
 <thead class="thead-light">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageUpload)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -33,6 +36,9 @@
         <th>
             @Html.DisplayNameFor(model => model.PricePurchase)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
         @*<th>
             @Html.DisplayNameFor(model => model.ImagePath)
         </th>*@
@@ -42,41 +48,44 @@
 <tbody>
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                <img src="~/Images/@item.ImagePath" alt="@item.ImagePath" style="width: 70px; height: 100px" />
-            </td>
+    <tr>
+        <td>
+            <img src="~/Images/@item.ImagePath" alt="@item.ImagePath" style="width: 40px; height: 60px" />
+        </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Supplier.Name)
-            </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.BarCode)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.QuantityStock)
-                </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Active)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PriceSales)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PricePurchase)
-            </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.ImagePath)
-                </td>*@
-            <td>
-                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                <a class="btn btn bg-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Supplier.Name)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.BarCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuantityStock)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Active)
+        </td>
+        <td>
+            @item.PriceSales.ToString("C")
+        </td>
+        <td>
+            @item.PricePurchase.ToString("C")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.Name)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ImagePath)
+        </td>*@
+        <td>
+            <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+            <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
+            <a class="btn btn bg-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+        </td>
+    </tr>
     }
 </tbody>
 </table>

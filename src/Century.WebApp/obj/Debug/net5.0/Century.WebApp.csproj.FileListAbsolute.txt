@@ -177,11 +177,7 @@ C:\Users\fdiasfer\source\repos\Century\src\Century.WebApp\obj\Debug\net5.0\Razor
 C:\Users\fdiasfer\source\repos\Century\src\Century.WebApp\obj\Debug\net5.0\Razor\Views\Products\Details.cshtml.g.cs
 C:\Users\fdiasfer\source\repos\Century\src\Century.WebApp\obj\Debug\net5.0\Razor\Views\Products\Edit.cshtml.g.cs
 C:\Users\fdiasfer\source\repos\Century\src\Century.WebApp\obj\Debug\net5.0\Razor\Views\Products\Index.cshtml.g.cs
-C:\Users\fdiasfer\source\repos\Century\src\Century.WebApp\obj\Debug\net5.0\Razor\Views\Addresses\Create.cshtml.g.cs
-C:\Users\fdiasfer\source\repos\Century\src\Century.WebApp\obj\Debug\net5.0\Razor\Views\Addresses\Delete.cshtml.g.cs
-C:\Users\fdiasfer\source\repos\Century\src\Century.WebApp\obj\Debug\net5.0\Razor\Views\Addresses\Details.cshtml.g.cs
-C:\Users\fdiasfer\source\repos\Century\src\Century.WebApp\obj\Debug\net5.0\Razor\Views\Addresses\Edit.cshtml.g.cs
-C:\Users\fdiasfer\source\repos\Century\src\Century.WebApp\obj\Debug\net5.0\Razor\Views\Addresses\Index.cshtml.g.cs
 C:\Users\fdiasfer\source\repos\Century\src\Century.WebApp\obj\Debug\net5.0\Razor\Views\Suppliers\_Address.cshtml.g.cs
 C:\Users\fdiasfer\source\repos\Century\src\Century.WebApp\obj\Debug\net5.0\Razor\Views\Suppliers\_Email.cshtml.g.cs
 C:\Users\fdiasfer\source\repos\Century\src\Century.WebApp\obj\Debug\net5.0\Razor\Views\Suppliers\_Phone.cshtml.g.cs
+C:\Users\fdiasfer\source\repos\Century\src\Century.WebApp\obj\Debug\net5.0\Razor\Views\Products\_Category.cshtml.g.cs

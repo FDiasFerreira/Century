@@ -1,17 +1,16 @@
 ﻿@model Century.WebApp.Models.SupplierViewModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit " + Model.Name;
 }
 
-<h1>Edit</h1>
-
-<h4>SupplierViewModel</h4>
+<h4 style="padding-top: 30px">@ViewData["Title"] </h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <input type="hidden" asp-for="Id" />
             <div class="form-group form-check">
                 <label class="form-check-label">
@@ -43,16 +42,33 @@
                 <input asp-for="BirthDate" class="form-control" />
                 <span asp-validation-for="BirthDate" class="text-danger"></span>
             </div>
+
+
+            <h4>Address</h4>
+            <hr />
+
+            <partial name="_Address" />
+
+            <h4>Phone</h4>
+            <hr />
+
+            <partial name="_Phone" />
+
+            <h4>E-mail</h4>
+            <hr />
+
+            <partial name="_Email" />
+
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index">Back to List</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

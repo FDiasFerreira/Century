@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Century.WebApp.Models.SupplierViewModel>
+﻿@using Century.WebApp.Extensions 
+@model IEnumerable<Century.WebApp.Models.SupplierViewModel>
+
 
 @{
     ViewData["Title"] = "Suppliers List";
@@ -49,7 +51,7 @@
                 @Html.DisplayFor(modelItem => item.SupplierType)
             </td>*@
             <td>
-                @Html.DisplayFor(modelItem => item.Document)
+                @this.DocumentsFormat(item.SupplierType, item.Document)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BirthDate)
